@@ -28,3 +28,6 @@ $next-rce-draftjs-options:(
 ```jsx
 BACKUP_USAGE
 ```
+
+## resource:
+- https://juejin.im/entry/597be4d76fb9a03c32238e80
