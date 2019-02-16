@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import noop from 'noop';
 import objectAssign from 'object-assign';
 import { Editor, EditorState, RichUtils } from 'draft-js';
+import { INLINE_STYLES } from './constant';
 
 export default class extends Component {
   /*===properties start===*/
@@ -26,46 +27,58 @@ export default class extends Component {
     this.onChange = (editorState) => this.setState({ editorState });
   }
 
-  toggleInlineStyle(style) {
-    let state = RichUtils.toggleInlineStyle(this.state.editorState, style);
-    this.onChange(state);
-  }
+  undo = () => {
+    const { editorState } = this.state;
+    this.setState({
+      editorState: EditorState.undo(editorState)
+    });
+  };
+
+  redo = () => {
+    const { editorState } = this.state;
+    this.setState({
+      editorState: EditorState.redo(editorState)
+    });
+  };
+
+  onInlineAction = (inItem) => {
+    console.log(inItem);
+    const { editorState } = this.state;
+    this.setState({
+      editorState: RichUtils.toggleInlineStyle(editorState, inItem.style)
+    });
+  };
 
   render() {
-    let editorState = this.state.editorState;
-    let defaultInlineStyle = [
-      { el: <span style={{ fontWeight: "bold" }}>B</span>, style: 'BOLD' },
-      { el: <span style={{ fontStyle: "italic" }}>I</span>, style: 'ITALIC' },
-      { el: <span style={{ textDecoration: "underline" }}>U</span>, style: 'UNDERLINE' },
-      { el: <span style={{ backgroundColor: '#000' }} className="color-show" ></span>, style: 'NONE' },
-      { el: <span style={{ backgroundColor: '#e24' }} className="color-show" ></span>, style: 'RED' },
-      { el: <span style={{ backgroundColor: '#39f' }} className="color-show" ></span>, style: 'BLUE' },
-      { el: <span style={{ backgroundColor: '#f93' }} className="color-show" ></span>, style: 'ORANGE' },
-      { el: <span style={{ backgroundColor: '#3a6' }} className="color-show" ></span>, style: 'GREEN' }
-    ];
-    let customColorStyleMap = {
-      NONE: { color: '#000' },
-      RED: { color: '#e24' },
-      BLUE: { color: '#39f' },
-      ORANGE: { color: '#f93' },
-      GREEN: { color: '#3a6' }
-    };
     return (
-      <div className="next-rce-editor">
-        <div className="editor-btn-group">
-          {defaultInlineStyle.map((item) => (
-            <span onClick={() => this.toggleInlineStyle(item.style)} key={item.style}>
-              {item.el}
-            </span>
-          ))}
+      <section className="next-rce-draftjs">
+        <div className="next-rce-draftjs-control">
+          <span className="action action-undo" onClick={this.undo}>
+            撤销
+          </span>
+          <span className="action action-redo" onClick={this.redo}>
+            重做
+          </span>
+
+          {/* inline styles:  */}
+          {INLINE_STYLES.map((item) => {
+            return (
+              <span
+                className="action"
+                key={item.label}
+                label={item.label}
+                onClick={this.onInlineAction.bind(this, item)}
+                children={item.label}
+              />
+            );
+          })}
         </div>
         <Editor
-          placeholder={'Write what you would say.'}
-          editorState={editorState}
+          editorState={this.state.editorState}
           onChange={this.onChange}
-          customStyleMap={customColorStyleMap}
+          placeholder="Your content."
         />
-      </div>
+      </section>
     );
   }
 }

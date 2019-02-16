@@ -1,7 +1,25 @@
-$next-rce-draftjs-options:(
+$next-rce-draftjs-options: () !default;
 
-)!default;
+.next-rce-draftjs {
+  border: 1px solid #ccc;
+  &-control {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .DraftEditor-root {
+    $padding: 10px;
+    position: relative;
+    padding: $padding;
+  }
 
-.next-rce-draftjs{
-  color:#000;
+  .action {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-right: 10px;
+    user-select: none;
+    cursor: pointer;
+    &:active {
+      background: #ccc;
+    }
+  }
 }
