@@ -37,12 +37,14 @@ export default class extends Component {
       { el: <span style={{ fontWeight: "bold" }}>B</span>, style: 'BOLD' },
       { el: <span style={{ fontStyle: "italic" }}>I</span>, style: 'ITALIC' },
       { el: <span style={{ textDecoration: "underline" }}>U</span>, style: 'UNDERLINE' },
-      { el: <span><div className="color-show" style={{ backgroundColor: '#e24' }}></div></span>, style: 'RED' },
-      { el: <span><div className="color-show" style={{ backgroundColor: '#39f' }}></div></span>, style: 'BLUE' },
-      { el: <span><div className="color-show" style={{ backgroundColor: '#f93' }}></div></span>, style: 'ORANGE' },
-      { el: <span><div className="color-show" style={{ backgroundColor: '#3a6' }}></div></span>, style: 'GREEN' }
+      { el: <span style={{ backgroundColor: '#000' }} className="color-show" ></span>, style: 'NONE' },
+      { el: <span style={{ backgroundColor: '#e24' }} className="color-show" ></span>, style: 'RED' },
+      { el: <span style={{ backgroundColor: '#39f' }} className="color-show" ></span>, style: 'BLUE' },
+      { el: <span style={{ backgroundColor: '#f93' }} className="color-show" ></span>, style: 'ORANGE' },
+      { el: <span style={{ backgroundColor: '#3a6' }} className="color-show" ></span>, style: 'GREEN' }
     ];
     let customColorStyleMap = {
+      NONE: { color: '#000' },
       RED: { color: '#e24' },
       BLUE: { color: '#39f' },
       ORANGE: { color: '#f93' },

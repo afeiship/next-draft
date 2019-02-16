@@ -14,6 +14,16 @@ button{
 .hello-next-rce-draftjs{
   padding:50px 20px;
 
+  .color-show{
+    display: inline-block;
+    padding: 0 13px;
+    height: 14px;
+  }
+
+  .public-DraftEditorPlaceholder-inner{
+    color: #999;
+  }
+
   .button{
     border: none;
     display: block;
