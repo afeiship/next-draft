@@ -4,8 +4,19 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from 'noop';
 import objectAssign from 'object-assign';
-import { Editor, EditorState, RichUtils } from 'draft-js';
-import { INLINE_STYLES, BLOCK_TYPES } from './constant';
+import { Editor, EditorState, RichUtils, AtomicBlockUtils } from 'draft-js';
+import { INLINE_STYLES, BLOCK_TYPES, myMediaBlockRenderer } from './constant';
+
+const addImage = (editorState, data) => {
+  const contentState = editorState.getCurrentContent();
+  const contentStateWithEntity = contentState.createEntity('image', 'IMMUTABLE', data);
+  const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+  const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+  return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, ' ');
+};
+
+
+
 
 export default class extends Component {
   /*===properties start===*/
@@ -57,6 +68,17 @@ export default class extends Component {
     });
   };
 
+  onInsertImage = () => {
+    const data = {
+      src: 'http://www.xlzx.cn/newsite/upimg/allimg/1011/48_29105448.jpg',
+      description: '白鸟之死'
+    };
+    this.setState({
+      editorState: addImage(this.state.editorState, data)
+    })
+    console.log('insert image');
+  };
+
   render() {
     return (
       <section className="next-rce-draftjs">
@@ -80,22 +102,26 @@ export default class extends Component {
               />
             );
           })}
-          <span className="line"/>
+          <span className="line" />
           {/* block styles:  */}
           {BLOCK_TYPES.map((item) => {
             return (
               <span
                 className="action"
                 key={item.label}
-                label={item.label}
                 onClick={this.onBlockAction.bind(this, item)}
                 children={item.label}
               />
             );
           })}
+          {/* Customize Image */}
+          <span className="action action-insert-image" onClick={this.onInsertImage}>
+            图片
+          </span>
         </div>
         <Editor
           editorState={this.state.editorState}
+          blockRendererFn={myMediaBlockRenderer}
           onChange={this.onChange}
           placeholder="Your content."
         />
