@@ -8,10 +8,6 @@
     "email": "1290657123@qq.com"
   },
   "license": "MIT",
-  "dependencies": {
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2"
-  },
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
@@ -27,5 +23,9 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
   }
 }
