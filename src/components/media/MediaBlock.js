@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from './Image'
+import TuCharts from './tu-charts'
 
 export default class MediaBlock extends React.Component {
   render() {
@@ -10,6 +11,12 @@ export default class MediaBlock extends React.Component {
     if (type === 'image') {
       return (
         <Image src={src} description={description} />
+      )
+    }
+
+    if(type === 'charts'){
+      return (
+        <TuCharts src={src} description={description}/>
       )
     }
   }

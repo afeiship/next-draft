@@ -15,6 +15,14 @@ const addImage = (editorState, data) => {
   return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, ' ');
 };
 
+const addCharts = (editorState, data) => {
+  const contentState = editorState.getCurrentContent();
+  const contentStateWithEntity = contentState.createEntity('charts', 'IMMUTABLE', data);
+  const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+  const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+  return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, ' ');
+};
+
 let customColorStyleMap = {
   NONE: { color: '#000' },
   RED: { color: '#e24' },
@@ -85,6 +93,17 @@ export default class extends Component {
     console.log('insert image');
   };
 
+  onInsertCharts = () => {
+    const data = {
+      src: 'http://www.xlzx.cn/newsite/upimg/allimg/1011/48_29105448.jpg',
+      description: 'TuCharts'
+    };
+    this.setState({
+      editorState: addCharts(this.state.editorState, data)
+    })
+    console.log('insert charts');
+  };
+
   render() {
     return (
       <section className="next-rce-draftjs">
@@ -126,6 +145,9 @@ export default class extends Component {
           {/* Customize Image */}
           <span className="action action-insert-image" onClick={this.onInsertImage}>
             图片
+          </span>
+          <span className="action action-insert-charts" onClick={this.onInsertCharts}>
+            图表
           </span>
         </div>
         <Editor
