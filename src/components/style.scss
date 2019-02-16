@@ -1,10 +1,17 @@
 $next-rce-draftjs-options: () !default;
 
+
+
 .next-rce-draftjs {
   border: 1px solid #ccc;
   &-control {
     padding: 10px;
     border-bottom: 1px solid #eee;
+  }
+
+  blockquote{
+    border-left: 4px solid #ccc;
+    padding-left: 20px;
   }
   .DraftEditor-root {
     $padding: 10px;
@@ -15,11 +22,16 @@ $next-rce-draftjs-options: () !default;
   .action {
     border: 1px solid #ccc;
     padding: 5px;
-    margin-right: 10px;
+    margin-right: 5px;
     user-select: none;
     cursor: pointer;
     &:active {
       background: #ccc;
     }
+  }
+
+  .line{
+    border-left: 1px solid #333;
+    margin: 0 5px 0 0;
   }
 }
