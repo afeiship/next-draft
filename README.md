@@ -1,4 +1,4 @@
-# next-rce-draftjs
+# react-rce-draftjs
 > A lite rich editor based on draftJs(React)
 
 

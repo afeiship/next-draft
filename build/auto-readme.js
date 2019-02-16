@@ -10,7 +10,7 @@ const targetUsageRE = /## usage:\n```jsx\n(.*)\n```/;
 let readmeFile = path.join(__dirname,'../README.md');
 let _readmeFile = path.join(__dirname,'../_README.md');
 let exampleFile = path.join(__dirname,'../src/dev.js');
-let templateFile = path.join(__dirname,'../src/components/next-rce-draftjs.js');
+let templateFile = path.join(__dirname,'../src/components/react-rce-draftjs.js');
 
 
 

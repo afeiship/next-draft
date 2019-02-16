@@ -9,8 +9,8 @@ base.entry = {
 base.output = {
   path: config.build.assetsRoot,
   publicPath: config.build.assetsPublicPath,
-  filename: 'next-rce-draftjs.js',
-  library: 'NextRceDraftjs',
+  filename: 'react-rce-draftjs.js',
+  library: 'ReactRceDraftjs',
   libraryTarget: 'umd'
 }
 

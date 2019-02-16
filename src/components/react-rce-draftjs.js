@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import noop from 'noop';
 import objectAssign from 'object-assign';
 import { Editor, EditorState, RichUtils, AtomicBlockUtils } from 'draft-js';
-import { INLINE_STYLES, BLOCK_TYPES, myMediaBlockRenderer } from './constant';
+import { INLINE_STYLES, BLOCK_TYPES, mediaBlockRenderer } from './constant';
 
 const addImage = (editorState, data) => {
   const contentState = editorState.getCurrentContent();
@@ -29,8 +29,6 @@ let customColorStyleMap = {
   BLUE: { color: '#39f' },
   GREEN: { color: '#3a6' }
 };
-
-
 
 export default class extends Component {
   /*===properties start===*/
@@ -67,7 +65,6 @@ export default class extends Component {
   };
 
   onInlineAction = (inItem) => {
-    console.log(inItem);
     const { editorState } = this.state;
     this.setState({
       editorState: RichUtils.toggleInlineStyle(editorState, inItem.style)
@@ -75,7 +72,6 @@ export default class extends Component {
   };
 
   onBlockAction = (inItem) => {
-    console.log(inItem);
     const { editorState } = this.state;
     this.setState({
       editorState: RichUtils.toggleBlockType(editorState, inItem.style)
@@ -83,31 +79,33 @@ export default class extends Component {
   };
 
   onInsertImage = () => {
+    const { editorState } = this.state;
     const data = {
       src: 'http://www.xlzx.cn/newsite/upimg/allimg/1011/48_29105448.jpg',
       description: '白鸟之死'
     };
     this.setState({
-      editorState: addImage(this.state.editorState, data)
-    })
+      editorState: addImage(editorState, data)
+    });
     console.log('insert image');
   };
 
   onInsertCharts = () => {
+    const { editorState } = this.state;
     const data = {
       src: 'http://www.xlzx.cn/newsite/upimg/allimg/1011/48_29105448.jpg',
       description: 'TuCharts'
     };
     this.setState({
-      editorState: addCharts(this.state.editorState, data)
-    })
+      editorState: addCharts(editorState, data)
+    });
     console.log('insert charts');
   };
 
   render() {
     return (
-      <section className="next-rce-draftjs">
-        <div className="next-rce-draftjs-control">
+      <section className="react-rce-draftjs">
+        <div className="react-rce-draftjs-control">
           <span className="action action-undo" onClick={this.undo}>
             撤销
           </span>
@@ -117,8 +115,8 @@ export default class extends Component {
           <span className="line" />
           {/* inline styles:  */}
           {INLINE_STYLES.map((item) => {
-            if(item.el){
-              return item.el
+            if (item.el) {
+              return item.el;
             }
             return (
               <span
@@ -153,7 +151,7 @@ export default class extends Component {
         <Editor
           editorState={this.state.editorState}
           customStyleMap={customColorStyleMap}
-          blockRendererFn={myMediaBlockRenderer}
+          blockRendererFn={mediaBlockRenderer}
           onChange={this.onChange}
           placeholder="Your content."
         />

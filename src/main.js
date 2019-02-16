@@ -1,2 +1,2 @@
-import NextRceDraftjs from 'components/next-rce-draftjs';
-export default NextRceDraftjs;
+import ReactRceDraftjs from 'components/react-rce-draftjs';
+export default ReactRceDraftjs;

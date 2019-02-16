@@ -1,4 +1,4 @@
-# next-rce-draftjs
+# react-rce-draftjs
 > A lite rich editor based on draftJs(React)
 
 ## properties:
@@ -8,19 +8,19 @@ BACKUP_PROPERTIES
 
 ## install && import:
 ```bash
-npm install --save afeiship/next-rce-draftjs --registry=https://registry.npm.taobao.org
+npm install --save afeiship/react-rce-draftjs --registry=https://registry.npm.taobao.org
 ```
 
 ```js
-import NextRceDraftjs from 'next-rce-draftjs';
+import ReactRceDraftjs from 'react-rce-draftjs';
 ```
 
 ```scss
 // customize your styles:
-$next-rce-draftjs-options:(
+$react-rce-draftjs-options:(
 );
 
-@import 'node_modules/next-rce-draftjs/dist/style.scss';
+@import 'node_modules/react-rce-draftjs/dist/style.scss';
 ```
 
 
@@ -28,8 +28,3 @@ $next-rce-draftjs-options:(
 ```jsx
 BACKUP_USAGE
 ```
-
-## resource:
-- https://juejin.im/entry/597be4d76fb9a03c32238e80
-- https://github.com/draft-js-plugins/draft-js-plugins
-- https://github.com/draft-js-plugins/draft-js-plugins/blob/master/HOW_TO_CREATE_A_PLUGIN.md

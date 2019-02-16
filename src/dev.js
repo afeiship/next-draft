@@ -1,10 +1,10 @@
 import './dev.scss';
-import NextRceDraftjs from './main';
+import ReactRceDraftjs from './main';
 
 /*===example start===*/
 
-// install: npm install afeiship/next-rce-draftjs --save
-// import : import NextRceDraftjs from 'next-rce-draftjs'
+// install: npm install afeiship/react-rce-draftjs --save
+// import : import ReactRceDraftjs from 'react-rce-draftjs'
 
 class App extends React.Component{
   state = {
@@ -20,8 +20,8 @@ class App extends React.Component{
 
   render(){
     return (
-      <div className="hello-next-rce-draftjs">
-        <NextRceDraftjs ref='rc' />
+      <div className="hello-react-rce-draftjs">
+        <ReactRceDraftjs ref='rc' />
       </div>
     );
   }
