@@ -15,6 +15,12 @@ const addImage = (editorState, data) => {
   return AtomicBlockUtils.insertAtomicBlock(newEditorState, entityKey, ' ');
 };
 
+let customColorStyleMap = {
+  NONE: { color: '#000' },
+  RED: { color: '#e24' },
+  BLUE: { color: '#39f' },
+  GREEN: { color: '#3a6' }
+};
 
 
 
@@ -92,6 +98,9 @@ export default class extends Component {
           <span className="line" />
           {/* inline styles:  */}
           {INLINE_STYLES.map((item) => {
+            if(item.el){
+              return item.el
+            }
             return (
               <span
                 className="action"
@@ -121,6 +130,7 @@ export default class extends Component {
         </div>
         <Editor
           editorState={this.state.editorState}
+          customStyleMap={customColorStyleMap}
           blockRendererFn={myMediaBlockRenderer}
           onChange={this.onChange}
           placeholder="Your content."
