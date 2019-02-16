@@ -31,3 +31,5 @@ BACKUP_USAGE
 
 ## resource:
 - https://juejin.im/entry/597be4d76fb9a03c32238e80
+- https://github.com/draft-js-plugins/draft-js-plugins
+- https://github.com/draft-js-plugins/draft-js-plugins/blob/master/HOW_TO_CREATE_A_PLUGIN.md
