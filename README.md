@@ -1,2 +1,13 @@
-# next-draft
-> A lite rich editor based on draft-js(React).
+# next-rce-draftjs
+> A lite rich editor based on draftJs(React)
+
+
+## properties:
+```javascript
+AUTO_PROPERTIES
+```
+
+## usage:
+```jsx
+AUTO_USAGE
+```
